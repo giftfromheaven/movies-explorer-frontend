@@ -26,11 +26,11 @@
 
 ### Адрес сайта
 
-- gfh.movie.nomoredomains.work
+- [gfh.movie.nomoredomains.work](gfh.movie.nomoredomains.work)
 
 ### Адрес сервера
 
-- api.gfh.movie.nomoredomains.work
+- [api.gfh.movie.nomoredomains.work](api.gfh.movie.nomoredomains.work)
 
 ### Макет
 
