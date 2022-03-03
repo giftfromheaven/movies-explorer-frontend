@@ -57,9 +57,8 @@ function Navigation({ place }) {
           place === "landing" ? "navigation__profile-edit_hidden" : ""
         }`}
       >
-        <span className="navigation__profile-text">Аккаунт</span>
         <div className="navigation__profile-icon-wrapper">
-          <div className="navigation__profile-icon" />
+          <span className="navigation__profile-text">Аккаунт</span>
         </div>
       </Link>
       <button
@@ -81,3 +80,68 @@ function Navigation({ place }) {
 }
 
 export default Navigation;
+
+// import React, { useEffect } from "react";
+// import userpic from "../../images/profile-icon.svg";
+// import "./Navigation.css";
+// import { Link } from "react-router-dom";
+// import { Logo } from "../Logo/Logo";
+// import { Menu } from "../Menu/Menu";
+
+// export function Navigation() {
+//   //Стейт гамбургер меню
+//   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+//   //Открытие меню
+//   function openMenu() {
+//     setIsMenuOpen(true);
+//   }
+//   //Закрытие по нажатию на кнопку
+//   function closeMenu() {
+//     setIsMenuOpen(false);
+//   }
+//   //Закрытие по нажатию на esc
+//   useEffect(() => {
+//     const closeByEscape = (e) => {
+//       if (e.key === "Escape") {
+//         closeMenu();
+//       }
+//     };
+//     document.addEventListener("keydown", closeByEscape);
+//     //!!clean up функция через return
+//     return () => document.removeEventListener("keydown", closeByEscape);
+//   }, []);
+//   //Закрытие по нажатию на свободное место за попапом
+//   useEffect(() => {
+//     const closeByClick = (e) => {
+//       if (e.target.classList.contains("Menu")) {
+//         closeMenu();
+//       }
+//       e.stopPropagation();
+//     };
+//     document.addEventListener("click", closeByClick);
+//     return () => document.removeEventListener("click", closeByClick);
+//   }, []);
+
+//   return (
+//     <nav className="nav">
+//       <div className="nav__wrapper">
+//         <Logo />
+//         <Link className="nav__link" to="/movies">
+//           Фильмы
+//         </Link>
+//         <Link className="nav__link" to="/saved-movies">
+//           Сохраненные фильмы
+//         </Link>
+//       </div>
+//       <Link className="nav__profile-link transition-link" to="/profile">
+//         <p>Аккаунт</p>
+//         <img src={userpic} alt="иконка юзера" />
+//       </Link>
+//       <Menu
+//         isOpen={isMenuOpen}
+//         onButtonClick={openMenu}
+//         onClose={closeMenu}
+//       />
+//     </nav>
+//   );
+// }

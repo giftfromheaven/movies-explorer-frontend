@@ -36,6 +36,13 @@
   justify-content: space-between;
 }
 
+.search-form__icon {
+  background: url("./../../images/searchform/search.svg") no-repeat;
+  width: 34px;
+  height: 34px;
+  background-position: center;
+}
+
 .search-form__input {
   width: calc(100% - 35px);
   border: none;

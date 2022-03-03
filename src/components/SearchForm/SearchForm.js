@@ -31,10 +31,21 @@ function SearchForm({ onSubmit }) {
     <div className="search-form">
       <div className="search-form__container">
         <div className="search-form__wrapper">
-          <div className="search-form__icon"/>
+          <div className="search-form__icon" />
           <form className="search-form__field">
-            <input className="search-form__input" type="text" placeholder="Фильм" onFocus={clearError} value={inputValue || ""} onChange={handleChange}/>
-            <button className="search-form__button" type="submit" onClick={handleSearch}></button>
+            <input
+              className="search-form__input"
+              type="text"
+              placeholder="Фильм"
+              onFocus={clearError}
+              value={inputValue || ""}
+              onChange={handleChange}
+            />
+            <button
+              className="search-form__button"
+              type="submit"
+              onClick={handleSearch}
+            ></button>
           </form>
           <div className="search-form__checkbox-wrapper">
             <FilterCheckbox label="Короткометражки" />
