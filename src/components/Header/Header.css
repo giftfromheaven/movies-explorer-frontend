@@ -1,0 +1,9 @@
+.header {
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.header_place_landing {
+  background: #5c5c5c;
+}
