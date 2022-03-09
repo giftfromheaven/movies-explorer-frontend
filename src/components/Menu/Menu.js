@@ -54,8 +54,8 @@ function MenuButton({ isOpened, onMobileMenuClose, place }) {
             to="/profile"
             onClick={handleMobileMenuClose}
           >
-            <p className="navigation__profile-text">Аккаунт</p>
             <div className="navigation__profile-icon-wrapper">
+              <p className="navigation__profile-text">Аккаунт</p>
               <div className="navigation__profile-icon" />
             </div>
           </Link>
