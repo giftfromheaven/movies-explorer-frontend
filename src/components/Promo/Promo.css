@@ -4,11 +4,7 @@
   margin-top: -80px;
   color: #fff;
 }
-@media screen and (max-width: 425px) {
-  .promo {
-    padding: 144px 0 30px;
-  }
-}
+
 .promo__content-wrapper {
   display: flex;
   align-items: flex-start;
@@ -18,17 +14,7 @@
   padding: 0 70px;
   box-sizing: border-box;
 }
-@media screen and (max-width: 768px) {
-  .promo__content-wrapper {
-    flex-direction: column-reverse;
-    align-items: center;
-  }
-}
-@media screen and (max-width: 425px) {
-  .promo__content-wrapper {
-    padding: 0 5px;
-  }
-}
+
 .promo__text-wrapper {
   display: flex;
   flex-direction: column;
@@ -37,37 +23,14 @@
   max-width: 640px;
 }
 
-@media screen and (max-width: 768px) {
-  .promo__text-wrapper {
-    align-items: center;
-    padding-top: 48px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .promo__text-wrapper {
-    padding-top: 44px;
-  }
-}
 .promo__header {
+  font: Inter;
   font-size: 50px;
   line-height: 58px;
   font-weight: 400;
   margin: 0;
 }
-@media screen and (max-width: 768px) {
-  .promo__header {
-    text-align: center;
-    font-size: 40px;
-    line-height: 50px;
-  }
-}
-@media screen and (max-width: 425px) {
-  .promo__header {
-    font-size: 30px;
-    line-height: 38px;
-    color: #fff;
-  }
-}
+
 .promo__text {
   font-size: 13px;
   max-width: 310px;
@@ -76,18 +39,7 @@
   color: #fff;
   margin: 0;
 }
-@media screen and (max-width: 768px) {
-  .promo__text {
-    padding: 22px 0 92px;
-    text-align: center;
-  }
-}
-@media screen and (max-width: 425px) {
-  .promo__text {
-    padding: 24px 0 80px;
-    max-width: 260px;
-  }
-}
+
 .promo__button {
   background-color: transparent;
   border: 1px solid #fff;
@@ -107,8 +59,46 @@
 }
 
 @media screen and (max-width: 425px) {
+  .promo {
+    padding: 144px 0 30px;
+  }
   .promo__img {
     width: 206px;
     height: 210px;
+  }
+  .promo__content-wrapper {
+    padding: 0 5px;
+  }
+  .promo__text {
+    padding: 24px 0 80px;
+    max-width: 260px;
+  }
+  .promo__header {
+    font-size: 30px;
+    line-height: 38px;
+    color: #fff;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .promo__content-wrapper {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .promo__text {
+    padding: 22px 0 92px;
+    text-align: center;
+  }
+  .promo__header {
+    text-align: center;
+    font-size: 40px;
+    line-height: 50px;
+  }
+  .promo__text-wrapper {
+    padding-top: 44px;
+  }
+  .promo__text-wrapper {
+    align-items: center;
+    padding-top: 48px;
   }
 }

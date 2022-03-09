@@ -109,15 +109,9 @@
   padding: 5px;
   background: #f9f9f9;
   border-radius: 50px;
-  min-width: 100px;
-  min-height: 12px;
+  min-width: 70px;
+  min-height: 15px;
 }
-
-/* .navigation__profile-icon {
-  background: url("../../images/header/account-icon.svg") no-repeat;
-  min-width: 100px;
-  min-height: 12px;
-} */
 
 .navigation__profile-text {
   margin: 0;
