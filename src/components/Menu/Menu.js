@@ -27,26 +27,26 @@ function MenuButton({ isOpened, onMobileMenuClose, place }) {
               </Link>
             </li>
             <li className="menu__list-element">
-              <Link
+              <a
                 className={`menu__link ${
                   place === "movies" ? "menu__link_active" : ""
                 }`}
-                to="/movies"
+                href="/movies"
                 onClick={handleMobileMenuClose}
               >
                 Фильмы
-              </Link>
+              </a>
             </li>
             <li className="menu__list-element">
-              <Link
+              <a
                 className={`menu__link ${
                   place === "saved-movies" ? "menu__link_active" : ""
                 }`}
-                to="/saved-movies"
+                href="/saved-movies"
                 onClick={handleMobileMenuClose}
               >
                 Сохранённые фильмы
-              </Link>
+              </a>
             </li>
           </ul>
           <Link

@@ -1,5 +1,6 @@
 .movies-card {
   max-width: 364px;
+  width: 100%;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
   border-radius: 15px;
 }
