@@ -24,7 +24,7 @@ function Register({ onSubmit, isPreloaderShowing }) {
       buttonText="Войти"
       text="Ещё не зарегистрированы?"
       linkPath="/signup"
-      linkText="Регистрация"
+      linkText=" Регистрация"
       loginPage="true"
       isFormValid={isFormValid}
       isPreloaderShowing={isPreloaderShowing}
