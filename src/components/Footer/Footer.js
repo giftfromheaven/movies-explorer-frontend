@@ -18,7 +18,7 @@ function Footer() {
           <ul className="footer__nav-bar">
             <li className="footer__nav-item">
               <a
-                href="https://praktikum.yandex.ru/profile/web/"
+                href="https://practicum.yandex.ru/profile/web/"
                 target="_blank"
                 rel="noreferrer"
                 className="footer__link"

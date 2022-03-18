@@ -6,63 +6,36 @@ function MenuButton({ isOpened, onMobileMenuClose, place }) {
 
   return (
     <div className={`menu ${isOpened ? "menu_opened" : ""}`}>
-      <div
-        className={`menu__container ${
-          isOpened ? "menu__container_opened" : ""
-        }`}
-      >
-        <button
-          className="menu__close-button"
-          onClick={handleMobileMenuClose}
-        />
+      <div className={`menu__container ${isOpened ? "menu__container_opened" : ""}`}>
+        <button className="menu__close-button" onClick={handleMobileMenuClose}/>
         <nav className="menu__navigation">
           <ul className="menu__list">
             <li className="menu__list-element">
-              <Link
-                className="menu__link"
-                to="/"
-                onClick={handleMobileMenuClose}
-              >
+              <Link className="menu__link" to="/" onClick={handleMobileMenuClose}>
                 Главная
               </Link>
             </li>
             <li className="menu__list-element">
-              <a
-                className={`menu__link ${
-                  place === "movies" ? "menu__link_active" : ""
-                }`}
-                href="/movies"
-                onClick={handleMobileMenuClose}
-              >
+              <a className={`menu__link ${place === "movies" ? "menu__link_active" : ""}`} href="/movies" onClick={handleMobileMenuClose}>
                 Фильмы
               </a>
             </li>
             <li className="menu__list-element">
-              <a
-                className={`menu__link ${
-                  place === "saved-movies" ? "menu__link_active" : ""
-                }`}
-                href="/saved-movies"
-                onClick={handleMobileMenuClose}
-              >
+              <a className={`menu__link ${place === "saved-movies" ? "menu__link_active" : ""}`} href="/saved-movies" onClick={handleMobileMenuClose}>
                 Сохранённые фильмы
               </a>
             </li>
           </ul>
-          <Link
-            className="navigation__profile-edit navigation__profile-edit_place_menu"
-            to="/profile"
-            onClick={handleMobileMenuClose}
-          >
+          <Link className="navigation__profile-edit navigation__profile-edit_place_menu" to="/profile" onClick={handleMobileMenuClose}>
+            <p className="navigation__profile-text">Аккаунт</p>
             <div className="navigation__profile-icon-wrapper">
-              <p className="navigation__profile-text">Аккаунт</p>
-              <div className="navigation__profile-icon" />
+              <div className="navigation__profile-icon"/>
             </div>
           </Link>
         </nav>
       </div>
     </div>
   );
-}
+};
 
 export default MenuButton;

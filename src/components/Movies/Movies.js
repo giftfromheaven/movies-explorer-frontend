@@ -3,20 +3,8 @@ import { useLocation } from "react-router-dom";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
-function Movies({
-  isMoviesShort,
-  setIsMoviesShort,
-  filterShortMovies,
-  handleSearchByQuery,
-  downloadedMovies,
-  savedMovies,
-  checkIsMovieSaved,
-  handleSaveMovie,
-  handleDeleteMovie,
-  handleMarkedMovie,
-  isPreloaderShowing,
-  setIsPreloaderShowing,
-}) {
+function Movies({ isMoviesShort, setIsMoviesShort, filterShortMovies, handleSearchByQuery, downloadedMovies,
+  savedMovies, checkIsMovieSaved, handleSaveMovie, handleDeleteMovie, handleMarkedMovie, isPreloaderShowing, setIsPreloaderShowing }) {
   let location = useLocation();
   const [searchQuery, setSearchQuery] = React.useState("");
   const [isFirstRequest, setIsFirstRequest] = React.useState(true);
@@ -24,18 +12,13 @@ function Movies({
 
   const handleMoviesSearch = useCallback(() => {
     if (searchQuery.length > 0) {
-      setFindedMovies(handleSearchByQuery(downloadedMovies, searchQuery));
-      setIsFirstRequest(false);
-      localStorage.setItem("lastQuery", searchQuery);
+        setFindedMovies(handleSearchByQuery(downloadedMovies, searchQuery));
+        setIsFirstRequest(false);
+        localStorage.setItem("lastQuery", searchQuery);
     }
 
     setTimeout(() => setIsPreloaderShowing(false), 1500);
-  }, [
-    downloadedMovies,
-    handleSearchByQuery,
-    searchQuery,
-    setIsPreloaderShowing,
-  ]);
+  }, [downloadedMovies, handleSearchByQuery, searchQuery, setIsPreloaderShowing]);
 
   useEffect(() => {
     handleMoviesSearch();
@@ -63,14 +46,7 @@ function Movies({
         setIsMoviesShort(false);
       }
     }
-  }, [
-    downloadedMovies,
-    filterShortMovies,
-    getLastCheckboxStatus,
-    handleSearchByQuery,
-    isFirstRequest,
-    setIsMoviesShort,
-  ]);
+  }, [downloadedMovies, filterShortMovies, getLastCheckboxStatus, handleSearchByQuery, isFirstRequest, setIsMoviesShort]);
 
   useEffect(() => {
     showMoviesFromLastSearch();
@@ -99,7 +75,7 @@ function Movies({
         locationPathname={location.pathname}
       />
     </main>
-  );
+  )
 }
 
 export default Movies;

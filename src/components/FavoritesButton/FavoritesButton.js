@@ -9,13 +9,15 @@ function FavoritesButton({ className, onClick, locationPathname, isMarked }) {
     <button className={className} onClick={onClick}>
       {locationPathname === "/saved-movies" ? (
         <RemoveFavoritesButtonIcon />
-      ) : locationPathname === "/movies" && isMarked ? (
+      )
+      :
+      locationPathname === "/movies" && isMarked ? (
         <AddFavoritesButtonIconMarked />
       ) : (
         <AddFavoritesButtonIcon />
       )}
     </button>
-  );
+  )
 }
 
 export default FavoritesButton;

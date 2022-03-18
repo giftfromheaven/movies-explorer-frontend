@@ -33,6 +33,15 @@ function MoviesCard({
     <Switch>
       <Route path="/movies">
         <li className="movies-card">
+          <div className="movies-card__image-section">
+            <a href={movie.trailer}>
+              <img
+                className="movies-card__image"
+                alt={movie.NameRU}
+                src={movie.image}
+              />
+            </a>
+          </div>
           <div className="movies-card__container">
             <div className="movies-card__text-container">
               <h2 className="movies-card__title">{movie.nameRU}</h2>
@@ -46,20 +55,20 @@ function MoviesCard({
               locationPathname={locationPathname}
               isMarked={isMarked}
             />
-          </div>
-          <div className="movies-card__image-section">
-            <a href={movie.trailer}>
-              <img
-                className="movies-card__image"
-                alt={movie.NameRU}
-                src={movie.image}
-              />
-            </a>
           </div>
         </li>
       </Route>
       <Route path="/saved-movies">
         <li className="movies-card">
+          <div className="movies-card__image-section">
+            <a href={movie.trailer}>
+              <img
+                className="movies-card__image"
+                alt={movie.NameRU}
+                src={movie.image}
+              />
+            </a>
+          </div>
           <div className="movies-card__container">
             <div className="movies-card__text-container">
               <h2 className="movies-card__title">{movie.nameRU}</h2>
@@ -73,15 +82,6 @@ function MoviesCard({
               locationPathname={locationPathname}
               isMarked={isMarked}
             />
-          </div>
-          <div className="movies-card__image-section">
-            <a href={movie.trailer}>
-              <img
-                className="movies-card__image"
-                alt={movie.NameRU}
-                src={movie.image}
-              />
-            </a>
           </div>
         </li>
       </Route>

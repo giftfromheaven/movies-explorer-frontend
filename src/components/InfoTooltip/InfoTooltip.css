@@ -74,7 +74,7 @@
 }
 
 .popup__bold-text {
-  font-family: "Inter", "Helvetics", sans-serif;
+  font-family: 'Inter', 'Helvetics', sans-serif;
   font-style: normal;
   font-weight: 900;
   font-size: 18px;
@@ -93,4 +93,5 @@
     font-size: 13px;
     line-height: 15px;
   }
+
 }

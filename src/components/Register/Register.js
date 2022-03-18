@@ -58,7 +58,7 @@ function Register({ onSubmit, isPreloaderShowing }) {
         type="email"
         id="email"
         pattern={regex.email}
-        placeholder="email@yandex.ru"
+        placeholder="email@mail.ru"
         value={values.email || ""}
         onChange={useFormValidation.handleChange}
         required

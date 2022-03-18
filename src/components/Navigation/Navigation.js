@@ -39,7 +39,7 @@ function Navigation({ place, isLogedIn }) {
       </ul>
       <div
         className={`navigation__login ${
-          place !== "landing" ? "navigation__login_hidden" : ""
+          isLogedIn ? "navigation__login_hidden" : ""
         }`}
       >
         <Link to="/signup" className="navigation__login-element">
@@ -57,9 +57,7 @@ function Navigation({ place, isLogedIn }) {
           !isLogedIn ? "navigation__profile-edit_hidden" : ""
         }`}
       >
-        <div className="navigation__profile-icon-wrapper">
-          <span className="navigation__profile-text">Аккаунт</span>
-        </div>
+        <span className="navigation__profile-text">Аккаунт</span>
       </Link>
       <button
         className={`navigation__burger-button ${

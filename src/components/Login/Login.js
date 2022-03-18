@@ -21,7 +21,7 @@ function Register({ onSubmit, isPreloaderShowing }) {
     <AuthForm
       onSubmit={handleSubmit}
       title="Рады видеть!"
-      buttonText="Войти"
+      buttonText=" Войти"
       text="Ещё не зарегистрированы?"
       linkPath="/signup"
       linkText=" Регистрация"
@@ -39,7 +39,7 @@ function Register({ onSubmit, isPreloaderShowing }) {
         type="email"
         name="email"
         id="email"
-        placeholder="email@yandex.ru"
+        placeholder="email@mail.ru"
         pattern={regex.email}
         value={values.email || ""}
         onChange={useFormValidation.handleChange}
