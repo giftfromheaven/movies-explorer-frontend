@@ -101,8 +101,17 @@ class MainApi {
   }
 }
 
+// const mainApi = new MainApi({
+//   baseUrl: "api.gfh.movie.nomoredomains.work",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// });
+
+// export default mainApi;
+
 const mainApi = new MainApi({
-  baseUrl: "api.gfh.movie.nomoredomains.work",
+  baseUrl: "https://api.gfh.movie.nomoredomains.work",
   headers: {
     "Content-Type": "application/json",
   },
