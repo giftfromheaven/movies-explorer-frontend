@@ -1,13 +1,18 @@
 import { useCallback, useEffect, useState } from "react";
-import { Route, Switch, useRouteMatch, useHistory, useLocation } from "react-router-dom";
-import { EXIST_FOOTER_FOR_PAGE, SERVER_IMAGE_URL, SHORT_DURATION, YOU_SUCCESS_REGISTER,
-  NEW_CURRENTUSER_DATA_SUCCESS } from "../../utils/constants";
+import {
+  Route,
+  Switch,
+  useRouteMatch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
+import { EXIST_FOOTER_FOR_PAGE, SERVER_IMAGE_URL } from "../../utils/constants";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import mainApi from "../../utils/MainApi";
 import moviesApi from "../../utils/MoviesApi";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import Movies from "../Movies//Movies"
+import Movies from "../Movies//Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
@@ -15,7 +20,7 @@ import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import NotFound from "../NotFound/NotFound";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute"
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -36,11 +41,12 @@ function App() {
   function handleRegister({ email, password, name }) {
     clearInfoTooltip();
     setIsPreloaderShowing(true);
-    mainApi.register({ email: email.toLowerCase(), password, name })
+    mainApi
+      .register({ email: email.toLowerCase(), password, name })
       .then(() => {
         setIsResponseSuccessful(true);
         setIsInfoTooltipOpen(true);
-        setInfoTooltipMessage(YOU_SUCCESS_REGISTER);
+        setInfoTooltipMessage("Вы успешно зарегистрировались!");
         handleLogin({ email, password });
       })
       .catch((err) => {
@@ -51,12 +57,13 @@ function App() {
       .finally(() => {
         setIsSuccessMessageShowing(true);
         setIsPreloaderShowing(false);
-      })
+      });
   }
 
   function handleLogin({ email, password }) {
     setIsPreloaderShowing(true);
-    mainApi.authorize({ email, password })
+    mainApi
+      .authorize({ email, password })
       .then(() => {
         setIsLogedIn(true);
         getCurrentUser();
@@ -66,33 +73,35 @@ function App() {
       })
       .finally(() => {
         setIsPreloaderShowing(false);
-      })
+      });
   }
 
   function handleLogout() {
     setIsPreloaderShowing(true);
-    mainApi.logout()
+    mainApi
+      .logout()
       .then(() => {
         setIsLogedIn(false);
-          history.push("/");
-          localStorage.clear();
-        })
+        history.push("/");
+        localStorage.clear();
+      })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         setIsPreloaderShowing(false);
-      })
+      });
   }
 
   function handleUpdateUser({ name, email }) {
     clearInfoTooltip();
     setIsPreloaderShowing(true);
-    mainApi.updateCurrentUser({ name, email })
+    mainApi
+      .updateCurrentUser({ name, email })
       .then(() => {
         setCurrentUser({ name, email });
         setIsInfoTooltipOpen(true);
-        setInfoTooltipMessage(NEW_CURRENTUSER_DATA_SUCCESS);
+        setInfoTooltipMessage("Новые данные профиля сохранены");
         setIsResponseSuccessful(true);
       })
       .catch((err) => {
@@ -103,20 +112,23 @@ function App() {
       .finally(() => {
         setIsSuccessMessageShowing(true);
         setIsPreloaderShowing(false);
-      })
+      });
   }
 
   function getCurrentUser() {
-    mainApi.getCurrentUser()
+    mainApi
+      .getCurrentUser()
       .then((res) => {
         const { name, email, _id } = res;
         setCurrentUser({ name, email, _id });
         setIsLogedIn(true);
-        (location.pathname === "/signin" || location.pathname === "/signup") ? history.push("/movies") : history.push(location.pathname);
+        location.pathname === "/signin" || location.pathname === "/signup"
+          ? history.push("/movies")
+          : history.push(location.pathname);
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
   const isMoviesDownloaded = useCallback(() => {
@@ -129,22 +141,23 @@ function App() {
   }, []);
 
   function handleGetMovies() {
-    moviesApi.getMovies()
+    moviesApi
+      .getMovies()
       .then((moviesList) => {
         const formattedMovies = moviesList.map((movie) => {
           return {
-            country : movie.country,
-            director : movie.director,
-            duration : movie.duration,
-            year : movie.year,
-            description : movie.description,
+            country: movie.country,
+            director: movie.director,
+            duration: movie.duration,
+            year: movie.year,
+            description: movie.description,
             image: SERVER_IMAGE_URL + movie.image.url,
             trailer: movie.trailerLink,
             thumbnail: SERVER_IMAGE_URL + movie.image.formats.thumbnail.url,
             movieId: movie.id,
-            nameRU : movie.nameRU,
-            nameEN : movie.nameEN,
-          }
+            nameRU: movie.nameRU,
+            nameEN: movie.nameEN,
+          };
         });
         localStorage.setItem("localMovies", JSON.stringify(formattedMovies));
       })
@@ -154,12 +167,14 @@ function App() {
       .finally(() => {
         const localMovies = localStorage.getItem("localMovies");
         setDownloadedMovies(JSON.parse(localMovies));
-      })
+      });
   }
 
   function handleSearchByQuery(data, searchQuery) {
     const searchResult = data.filter((movie) => {
-      return movie.nameRU.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase());
+      return movie.nameRU
+        .toLocaleLowerCase()
+        .includes(searchQuery.toLocaleLowerCase());
     });
     if (!isMoviesShort) {
       return searchResult;
@@ -170,51 +185,62 @@ function App() {
 
   function filterShortMovies(movies) {
     return movies.filter((movie) => {
-      return movie.duration <= SHORT_DURATION;
+      return movie.duration <= 40;
     });
   }
 
   function handleGetSavedMovies() {
     setIsPreloaderShowing(true);
-    mainApi.getSavedMovies()
+    mainApi
+      .getSavedMovies()
       .then((movies) => {
-        setSavedMovies(movies.slice().reverse().filter((item) => item.owner === currentUser._id));
+        setSavedMovies(
+          movies
+            .slice()
+            .reverse()
+            .filter((item) => item.owner === currentUser._id)
+        );
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         setIsPreloaderShowing(false);
-      })
+      });
   }
 
   function handleSaveMovie(movie) {
-    mainApi.setSavedMovie(movie)
+    mainApi
+      .setSavedMovie(movie)
       .then((savedMovie) => {
         setSavedMovies([savedMovie, ...savedMovies]);
-
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
   function handleDeleteMovie(movie) {
-    const savedMovie = savedMovies.find((item) => item.movieId === movie.movieId);
-    mainApi.deleteSavedMovie(savedMovie)
+    const savedMovie = savedMovies.find(
+      (item) => item.movieId === movie.movieId
+    );
+    mainApi
+      .deleteSavedMovie(savedMovie)
       .then(() => {
-        const tempSavedMovies = savedMovies.filter((item) => item._id !== savedMovie._id);
+        const tempSavedMovies = savedMovies.filter(
+          (item) => item._id !== savedMovie._id
+        );
         setSavedMovies(tempSavedMovies);
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
   function checkIsMovieSaved(movie) {
-    const isSaved = savedMovies.some((item) => (item.movieId === movie.movieId));
+    const isSaved = savedMovies.some((item) => item.movieId === movie.movieId);
     return isSaved;
-  };
+  }
 
   function handleMarkedMovie(movie) {
     const isSaved = checkIsMovieSaved(movie);
@@ -223,7 +249,7 @@ function App() {
     } else {
       handleDeleteMovie(movie);
     }
-  };
+  }
 
   function closeInfoTooltip() {
     setIsInfoTooltipOpen(false);
@@ -239,12 +265,12 @@ function App() {
       handleGetSavedMovies();
       isMoviesDownloaded();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLogedIn]);
 
   useEffect(() => {
     getCurrentUser();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -256,7 +282,7 @@ function App() {
             <Main />
           </Route>
           <ProtectedRoute path="/movies" isLogedIn={isLogedIn}>
-            <Header place="movies" isLogedIn={isLogedIn}/>
+            <Header place="movies" isLogedIn={isLogedIn} />
             <Movies
               handleSearchByQuery={handleSearchByQuery}
               downloadedMovies={downloadedMovies}
@@ -273,7 +299,7 @@ function App() {
             />
           </ProtectedRoute>
           <ProtectedRoute path="/saved-movies" isLogedIn={isLogedIn}>
-            <Header place="saved-movies" isLogedIn={isLogedIn}/>
+            <Header place="saved-movies" isLogedIn={isLogedIn} />
             <SavedMovies
               handleSearchByQuery={handleSearchByQuery}
               downloadedMovies={downloadedMovies}
@@ -290,7 +316,7 @@ function App() {
             />
           </ProtectedRoute>
           <ProtectedRoute path="/profile" isLogedIn={isLogedIn}>
-            <Header place="profile" isLogedIn={isLogedIn}/>
+            <Header place="profile" isLogedIn={isLogedIn} />
             <Profile
               onLogout={handleLogout}
               onUpdate={handleUpdateUser}
@@ -314,9 +340,7 @@ function App() {
             <NotFound />
           </Route>
         </Switch>
-        {useRouteMatch(EXIST_FOOTER_FOR_PAGE) ? null : (
-          <Footer />
-        )}
+        {useRouteMatch(EXIST_FOOTER_FOR_PAGE) ? null : <Footer />}
         <InfoTooltip
           isOpen={isInfoTooltipOpen}
           isSuccessful={isResponseSuccessful}
