@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import Menu from "../Menu/Menu";
 
-function Navigation({ place }) {
+function Navigation({ place, isLogedIn }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const handleMobileMenuOpen = () => setIsMobileMenuOpen(true);
   const onMobileMenuClose = () => setIsMobileMenuOpen(false);
@@ -13,33 +13,33 @@ function Navigation({ place }) {
       <Logo />
       <ul
         className={`navigation__films ${
-          place === "landing" ? "navigation__films_hidden" : ""
+          !isLogedIn ? "navigation__films_hidden" : ""
         }`}
       >
         <li className="navigation__films-element">
-          <Link
-            to="/movies"
+          <a
+            href="/movies"
             className={`navigation__link ${
               place === "movies" ? "navigation__link_active" : ""
             }`}
           >
             Фильмы
-          </Link>
+          </a>
         </li>
         <li className="navigation__films-element">
-          <Link
-            to="/saved-movies"
+          <a
+            href="/saved-movies"
             className={`navigation__link ${
               place === "saved-movies" ? "navigation__link_active" : ""
             }`}
           >
             Сохранённые фильмы
-          </Link>
+          </a>
         </li>
       </ul>
       <div
         className={`navigation__login ${
-          place !== "landing" ? "navigation__login_hidden" : ""
+          isLogedIn ? "navigation__login_hidden" : ""
         }`}
       >
         <Link to="/signup" className="navigation__login-element">
@@ -54,16 +54,14 @@ function Navigation({ place }) {
       <Link
         to="/profile"
         className={`navigation__profile-edit navigation__profile-edit_place_header ${
-          place === "landing" ? "navigation__profile-edit_hidden" : ""
+          !isLogedIn ? "navigation__profile-edit_hidden" : ""
         }`}
       >
-        <div className="navigation__profile-icon-wrapper">
-          <span className="navigation__profile-text">Аккаунт</span>
-        </div>
+        <span className="navigation__profile-text">Аккаунт</span>
       </Link>
       <button
         className={`navigation__burger-button ${
-          isMobileMenuOpen || place === "landing"
+          isMobileMenuOpen || !isLogedIn
             ? "navigation__burger-button_hidden"
             : ""
         }`}
