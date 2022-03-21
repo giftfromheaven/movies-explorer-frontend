@@ -2,6 +2,8 @@
 
 Фронтенд для дипломного проекта Яндекс.Практикума Movies Explorer созданный на React.js, с возможностью регистрации и авторизации пользователей, поиска фильмов и добавления их в избранное.
 
+![preview](https://raw.githubusercontent.com/giftfromheaven/movies-explorer-frontend/main/src/images/screenshot.png)
+
 ## Описание
 
 - Регистрация пользователей
