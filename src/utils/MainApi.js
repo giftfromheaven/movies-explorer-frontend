@@ -101,20 +101,20 @@ class MainApi {
   }
 }
 
-// const mainApi = new MainApi({
-//   baseUrl: "https://api.gfh.movie.nomoredomains.work",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// });
-
-// export default mainApi;
-
 const mainApi = new MainApi({
-  baseUrl: "http://localhost:3001",
+  baseUrl: "https://api.gfh.movie.nomoredomains.work",
   headers: {
     "Content-Type": "application/json",
   },
 });
+
+export default mainApi;
+
+// const mainApi = new MainApi({
+//   baseUrl: "http://localhost:3001",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// });
 
 export default mainApi;
