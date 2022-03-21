@@ -21,6 +21,11 @@ import Footer from "../Footer/Footer";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import NotFound from "../NotFound/NotFound";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import {
+  SHORT_DURATION,
+  NEW_CURRENTUSER_DATA_SUCCESS,
+  YOU_SUCCESS_REGISTER,
+} from "../../utils/constants";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -46,7 +51,7 @@ function App() {
       .then(() => {
         setIsResponseSuccessful(true);
         setIsInfoTooltipOpen(true);
-        setInfoTooltipMessage("Вы успешно зарегистрировались!");
+        setInfoTooltipMessage(YOU_SUCCESS_REGISTER);
         handleLogin({ email, password });
       })
       .catch((err) => {
@@ -101,7 +106,7 @@ function App() {
       .then(() => {
         setCurrentUser({ name, email });
         setIsInfoTooltipOpen(true);
-        setInfoTooltipMessage("Новые данные профиля сохранены");
+        setInfoTooltipMessage(NEW_CURRENTUSER_DATA_SUCCESS);
         setIsResponseSuccessful(true);
       })
       .catch((err) => {
@@ -185,7 +190,7 @@ function App() {
 
   function filterShortMovies(movies) {
     return movies.filter((movie) => {
-      return movie.duration <= 40;
+      return movie.duration <= SHORT_DURATION;
     });
   }
 
